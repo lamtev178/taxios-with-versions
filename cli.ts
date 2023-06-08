@@ -6,14 +6,14 @@ import { writeFileSync } from 'fs';
 import { mkdirp } from 'mkdirp';
 import nodePath from 'path';
 import minimist from 'minimist';
-// import 'dotenv/config'
-// console.log(process.env);
-// for(let i of process.argv){
-//     if(process.env[`${i}`]){
-//         console.log(i + " :", process.env[`${i}`]);
+import 'dotenv/config'
 
-//     }
-// }
+process.argv.forEach((el, index) => {
+    if(process.env[`${el}`]){
+        process.argv[index] = process.env[`${el}`] as string
+    }
+})
+
 const args = process.argv.slice(2);
 
 type Argv = {
