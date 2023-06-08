@@ -1,0 +1,57 @@
+{
+  "name": "taxios-with-versions",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cli.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lamtev178/taxios-with-versions.git"
+  },
+  "files": [
+    "dist/**"
+  ],
+  "bin": {
+    "taxios-version-generate": "dist/cli.js"
+  },
+  "scripts": {
+    "lint": "run-s -csn lint:eslint lint:prettier",
+    "fix": "run-s -csn fix:eslint fix:prettier",
+    "lint:prettier": "prettier --check .",
+    "fix:prettier": "prettier --write .",
+    "lint:eslint": "eslint --ext .ts,.js .",
+    "fix:eslint": "eslint --ext .ts,.js . --fix",
+    "build": "npm run clean && npm run compile",
+    "clean": "shx rm -rf ./dist",
+    "compile": "tsc -p tsconfig.build.json",
+    "test": "ts-node ./cli.ts --package-version 1.0.6 -o generated/PetStore.ts -e PetStore https://petstore.swagger.io/v2/swagger.json",
+    "prepare": "husky install",
+    "release": "standard-version"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.6.5",
+    "@types/minimist": "^1.2.2",
+    "@typescript-eslint/eslint-plugin": "^5.48.0",
+    "@typescript-eslint/parser": "^5.48.0",
+    "@web-bee-ru/commitlint-config": "^2.0.0",
+    "eslint": "^8.31.0",
+    "eslint-config-prettier": "^8.6.0",
+    "husky": "^8.0.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.8.1",
+    "shx": "^0.3.4",
+    "standard-version": "^9.5.0",
+    "ts-node": "^10.9.1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@simplesmiler/taxios-generate": "^0.2.15",
+    "dotenv": "^16.1.4",
+    "minimist": "^1.2.8",
+    "mkdirp": "^3.0.1"
+  },
+  "keywords": [
+    "typescript",
+    "taxios"
+  ]
+}
