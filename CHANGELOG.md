@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.2](https://github.com/projects/CURS/repos/ofkr-front/compare/diff?targetBranch=refs%2Ftags%2Fv1.2.1&sourceBranch=refs%2Ftags%2Fv1.2.2) (2023-06-12)
+
 ### [1.2.1](https://github.com/projects/CURS/repos/ofkr-front/compare/diff?targetBranch=refs%2Ftags%2Fv1.2.0&sourceBranch=refs%2Ftags%2Fv1.2.1) (2023-06-12)
 
 
