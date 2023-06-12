@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.1](https://github.com/projects/CURS/repos/ofkr-front/compare/diff?targetBranch=refs%2Ftags%2Fv1.2.0&sourceBranch=refs%2Ftags%2Fv1.2.1) (2023-06-12)
+
+
+### Bug Fixes
+
+* removeVersionFlags -1 index error ([249e739](https://github.com/projects/CURS/repos/ofkr-front/commits/249e739d3c34bb82255b3b0ec3f35417d0bc94d1))
+
 ## [1.2.0](https://github.com/projects/CURS/repos/ofkr-front/compare/diff?targetBranch=refs%2Ftags%2Fv1.1.0&sourceBranch=refs%2Ftags%2Fv1.2.0) (2023-06-12)
 
 ### Features
