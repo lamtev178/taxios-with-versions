@@ -4,15 +4,13 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [1.2.0](https://github.com/projects/CURS/repos/ofkr-front/compare/diff?targetBranch=refs%2Ftags%2Fv1.1.0&sourceBranch=refs%2Ftags%2Fv1.2.0) (2023-06-12)
 
-
 ### Features
 
-* package name, registry ([ae6957a](https://github.com/projects/CURS/repos/ofkr-front/commits/ae6957a13f984a6441933d6ba0a2f2dc37e19ca6))
-
+- package name, registry ([ae6957a](https://github.com/projects/CURS/repos/ofkr-front/commits/ae6957a13f984a6441933d6ba0a2f2dc37e19ca6))
 
 ### Documentation
 
-* flag explanation ([4e2b86d](https://github.com/projects/CURS/repos/ofkr-front/commits/4e2b86d3b359a5f35e10184b7473b2e6d62a8b32))
+- flag explanation ([4e2b86d](https://github.com/projects/CURS/repos/ofkr-front/commits/4e2b86d3b359a5f35e10184b7473b2e6d62a8b32))
 
 ## [1.1.0](https://github.com/projects/CURS/repos/ofkr-front/compare/diff?targetBranch=refs%2Ftags%2Fv1.0.3&sourceBranch=refs%2Ftags%2Fv1.1.0) (2023-06-08)
 

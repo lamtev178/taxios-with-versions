@@ -8,9 +8,7 @@ export function replaceVariablesFromEnv(args: string[]) {
 
 export function removeVersionFlags(args: string[], argsVersionsList: string[]) {
   for (const arg of argsVersionsList) {
-    args.splice(
-      args.findIndex((el) => el === arg),
-      2,
-    );
+    const index = args.findIndex((el) => el === arg);
+    if (index !== -1) args.splice(index, 2);
   }
 }
