@@ -4,10 +4,9 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [1.1.0](https://github.com/projects/CURS/repos/ofkr-front/compare/diff?targetBranch=refs%2Ftags%2Fv1.0.3&sourceBranch=refs%2Ftags%2Fv1.1.0) (2023-06-08)
 
-
 ### Features
 
-* use env file ([a90432f](https://github.com/projects/CURS/repos/ofkr-front/commits/a90432f6f2ed72ee1a208255d9969156cb4f37de))
+- use env file ([a90432f](https://github.com/projects/CURS/repos/ofkr-front/commits/a90432f6f2ed72ee1a208255d9969156cb4f37de))
 
 ### 1.0.3 (2023-06-08)
 

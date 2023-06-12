@@ -6,13 +6,13 @@ import { writeFileSync } from 'fs';
 import { mkdirp } from 'mkdirp';
 import nodePath from 'path';
 import minimist from 'minimist';
-import 'dotenv/config'
-import {replaceVariablesFromEnv, removeVersionFlags} from "./utils"
+import 'dotenv/config';
+import { replaceVariablesFromEnv, removeVersionFlags } from './utils';
 
-replaceVariablesFromEnv(process.argv)
+replaceVariablesFromEnv(process.argv);
 
 const args = process.argv.slice(2);
-const argsVersionsList = ["--package-version", "--package-name", "--registry"]
+const argsVersionsList = ['--package-version', '--package-name', '--registry'];
 
 type Argv = {
   out: string;
@@ -20,10 +20,10 @@ type Argv = {
   help: boolean;
   'package-version': string;
   'package-name'?: string;
-  'registry'?: string;
+  registry?: string;
 };
 const argv = minimist<Argv>(args, {
-  string: ['out', 'export', 'package-version', 'package-name', "registry"],
+  string: ['out', 'export', 'package-version', 'package-name', 'registry'],
   alias: {
     out: ['o'],
     export: ['e'],
@@ -41,7 +41,7 @@ if (!packageVersion) {
   process.exit(1);
 }
 
-removeVersionFlags(args, argsVersionsList)
+removeVersionFlags(args, argsVersionsList);
 
 execSync(`taxios-generate ${args.join(' ')}`);
 
@@ -51,13 +51,13 @@ async function main() {
 
     await copyFile(outputPath, `typesPackage/${outputPath}`);
 
-    if(registry){
+    if (registry) {
       writeFileSync('./typesPackage/.npmrc', registry);
     }
 
     writeFileSync('./typesPackage/package.json', JSON.stringify(config));
     execSync(`cd typesPackage && npm publish`);
-    console.log("Succes publish", packageName)
+    console.log('Succes publish', packageName);
   } catch (error) {
     console.error('An error has occurred ', error);
   }
