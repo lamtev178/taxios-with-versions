@@ -1,5 +1,7 @@
 # taxios-with-versions
 
+[![npm version](https://badge.fury.io/js/taxios-with-versions.svg)](https://badge.fury.io/js/taxios-with-versions)
+
 Wrapper over [@simplesmiler/taxios-generate](https://github.com/simplesmiler/taxios/tree/master/packages/taxios-generate) to auto publish generated types file depending on the package version.
 
 This package exposes a node CLI command called `taxios-version-generate`.
