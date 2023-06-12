@@ -43,31 +43,29 @@ if (!packageVersion) {
 
 removeVersionFlags(args, argsVersionsList);
 
-console.log(args);
+execSync(`taxios-generate ${args.join(' ')}`);
 
-// execSync(`taxios-generate ${args.join(' ')}`);
+async function main() {
+  try {
+    await mkdirp(nodePath.dirname(`typesPackage/${outputPath}`));
 
-// async function main() {
-//   try {
-//     await mkdirp(nodePath.dirname(`typesPackage/${outputPath}`));
+    await copyFile(outputPath, `typesPackage/${outputPath}`);
 
-//     await copyFile(outputPath, `typesPackage/${outputPath}`);
+    if (registry) {
+      writeFileSync('./typesPackage/.npmrc', registry);
+    }
 
-//     if (registry) {
-//       writeFileSync('./typesPackage/.npmrc', registry);
-//     }
+    writeFileSync('./typesPackage/package.json', JSON.stringify(config));
+    execSync(`cd typesPackage && npm publish`);
+    console.log('Succes publish', packageName);
+  } catch (error) {
+    console.error('An error has occurred ', error);
+  }
+}
 
-//     writeFileSync('./typesPackage/package.json', JSON.stringify(config));
-//     execSync(`cd typesPackage && npm publish`);
-//     console.log('Succes publish', packageName);
-//   } catch (error) {
-//     console.error('An error has occurred ', error);
-//   }
-// }
+main();
 
-// main();
-
-// const config = {
-//   name: packageName,
-//   version: packageVersion,
-// };
+const config = {
+  name: packageName,
+  version: packageVersion,
+};
