@@ -23,7 +23,7 @@
     "build": "npm run clean && npm run compile",
     "clean": "shx rm -rf ./dist",
     "compile": "tsc -p tsconfig.build.json",
-    "test": "ts-node ./cli.ts --package-version 1.0.6 -o generated/PetStore.ts -e PetStore https://petstore.swagger.io/v2/swagger.json",
+    "test": "ts-node ./cli.ts --package-version 1.1.6 --package-name taxios_petstore_test --registry @myscope:registry=https://mycustomregistry.example.org -o OUT_FILE -e PetStore URL",
     "release": "standard-version"
   },
   "devDependencies": {

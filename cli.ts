@@ -7,23 +7,23 @@ import { mkdirp } from 'mkdirp';
 import nodePath from 'path';
 import minimist from 'minimist';
 import 'dotenv/config'
+import {replaceVariablesFromEnv, removeVersionFlags} from "./utils"
 
-process.argv.forEach((el, index) => {
-    if(process.env[`${el}`]){
-        process.argv[index] = process.env[`${el}`] as string
-    }
-})
+replaceVariablesFromEnv(process.argv)
 
 const args = process.argv.slice(2);
+const argsVersionsList = ["--package-version", "--package-name", "--registry"]
 
 type Argv = {
   out: string;
   export?: string;
   help: boolean;
   'package-version': string;
+  'package-name'?: string;
+  'registry'?: string;
 };
 const argv = minimist<Argv>(args, {
-  string: ['out', 'export', 'package-version'],
+  string: ['out', 'export', 'package-version', 'package-name', "registry"],
   alias: {
     out: ['o'],
     export: ['e'],
@@ -33,16 +33,15 @@ const argv = minimist<Argv>(args, {
 const packageVersion = argv['package-version'];
 const outputPath = argv.out;
 const inputPath = argv._[0];
+const registry = argv.registry;
+const packageName = argv['package-name'] ? argv['package-name'] : `taxios_${inputPath.split('//')[1].split('/')[0]}`;
 
 if (!packageVersion) {
   console.error('You have to specify package-version');
   process.exit(1);
 }
 
-args.splice(
-  args.findIndex((el) => el === '--package-version'),
-  2,
-);
+removeVersionFlags(args, argsVersionsList)
 
 execSync(`taxios-generate ${args.join(' ')}`);
 
@@ -52,16 +51,21 @@ async function main() {
 
     await copyFile(outputPath, `typesPackage/${outputPath}`);
 
-    writeFileSync('./typesPackage/package.json', JSON.stringify(config), 'utf8');
+    if(registry){
+      writeFileSync('./typesPackage/.npmrc', registry);
+    }
+
+    writeFileSync('./typesPackage/package.json', JSON.stringify(config));
     execSync(`cd typesPackage && npm publish`);
+    console.log("Succes publish", packageName)
   } catch (error) {
-    console.log('An error has occurred ', error);
+    console.error('An error has occurred ', error);
   }
 }
 
 main();
 
 const config = {
-  name: `taxios_${inputPath.split('//')[1].split('/')[0]}`,
+  name: packageName,
   version: packageVersion,
 };
